@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Makeup Recommender</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>AI Makeup Recommender</h1>
+
+    <!-- Image Upload Section -->
+    <div id="uploadSection">
+      <h2>Upload a Facial Image</h2><br>
+      <input type="file" id="imageInput" accept="image/*" />
+    </div>
+
+    <!-- Analysis Result Section (Hidden by default) -->
+    <div id="analysisSection" class="hidden">
+      <h3>Analyzed Result</h3>
+      <p id="analysisText"></p>
+      <div id="confirmationButtons">
+        <button id="confirmBtn" class="btn">Yes, that's correct</button>
+        <button id="editBtn" class="btn">No, let me edit</button>
+      </div>
+      <!-- Edit form if user chooses to edit -->
+      <div id="editForm" class="hidden">
+        <label for="skinTypeInput">Skin Type:</label>
+        <input type="text" id="skinTypeInput" placeholder="e.g., Oily, Dry, Combination" />
+        <label for="skinColorInput">Skin Color/Tone:</label>
+        <input type="text" id="skinColorInput" placeholder="e.g., Fair, Medium, Deep" />
+        <button id="saveEditBtn" class="btn">Save</button>
+      </div>
+    </div>
+
+    <!-- Recommendations Section (Hidden by default) -->
+    <div id="recommendationsSection" class="hidden">
+      <h2>Product Recommendations</h2>
+      <p>Your perfect matches based on the analysis:</p>
+
+      <!-- Huda Beauty -->
+<div class="brand-section">
+  <h3>Huda Beauty</h3>
+  
+  <div class="product">
+    <img src="img/HBF.jpg" alt="Huda Foundation" />
+    <div class="container2">
+      <h4>Foundation</h4><br>
+      <p>Easy Blur Natural Airbrush Foundation</p><br>
+      <p>Vanilla 120b</p><br>
+    </div>
+  </div>
+
+  <div class="product">
+    <img src="img/HBC.jpg" alt="Huda Concealer" />
+    <div class="container2">
+      <h4>Concealer</h4><br>
+      <p>#Fauxfilter Luminous Matte Liquid</p><br>
+      <p>Meringue 2.1.</p><br>
+    </div>
+  </div>
+
+  <div class="product">
+    <img src="img/HBLB.jpg" alt="Huda Liquid Blush" />
+    <div class="container2">
+      <h4>Liquid Blush</h4><br>
+      <p>Blush Filter-Liquid Blush</p><br>
+      <p>Strawberry Cream-Dusty Rose</p><br>
+    </div>
+  </div>
+
+  <div class="product">
+    <img src="img/HBLG.jpg" alt="Huda Lip Gloss" />
+    <div class="container2">
+      <h4>Lip Gloss</h4><br>
+      <p>Faux Filler Extra Shine Lip Gloss</p><br>
+      <p>Sugar Baby (3.9ml)</p><br>
+    </div>
+  </div>
+</div>
+
+<!-- Nars -->
+<div class="brand-section">
+  <h3>Nars</h3>
+
+  <div class="product">
+    <img src="img/NarsF.jpg" alt="Nars Foundation" />
+    <div class="container2">
+      <h4>Foundation</h4><br>
+      <p>Light Reflecting Foundation</p><br>
+      <p>Vienna (30ml)</p><br>
+    </div>
+  </div>
+
+  <div class="product">
+    <img src="img/NarsC.jpg" alt="Nars Concealer" />
+    <div class="container2">
+      <h4>Concealer</h4><br>
+      <p>Radiant Creamy Concealer</p><br>
+      <p>Vanilla - Light 2 – Very Light With Neutral Undertones</p><br>
+    </div>
+  </div>
+
+  <div class="product">
+    <img src="img/NarsLB.jpg" alt="Nars Liquid Blush" />
+    <div class="container2">
+      <h4>Liquid Blush</h4><br>
+      <p>After Glow Liquid Blush</p><br>
+      <p>Behave-Manvue Pink</p><br>
+    </div>
+  </div>
+
+  <div class="product">
+    <img src="img/NarsLG.jpg" alt="Nars Lip Gloss" />
+    <div class="container2">
+      <h4>Lip Gloss</h4><br>
+      <p>Powermatte Lip Pigment</p><br>
+      <p>Walk This Way</p><br>
+    </div>
+  </div>
+</div>
+
+<!-- Fenty Beauty -->
+<div class="brand-section">
+  <h3>Fenty Beauty</h3>
+
+  <div class="product">
+    <img src="img/FBF.jpg" alt="Fenty Foundation" />
+    <div class="container2">
+      <h4>Foundation</h4><br>
+      <p>Soft’lit Luminous Foundation</p><br>
+      <p>123 (32ml)</p><br>
+    </div>
+  </div>
+
+  <div class="product">
+    <img src="img/FBC.jpg" alt="Fenty Concealer" />
+    <div class="container2">
+      <h4>Concealer</h4><br>
+      <p>We’re Even Concealer</p><br>
+      <p>Light 130w</p><br>
+    </div>
+  </div>
+
+  <div class="product">
+    <img src="img/FBLB.jpg" alt="Fenty Liquid Blush" />
+    <div class="container2">
+      <h4>Liquid Blush</h4><br>
+      <p>Cheeks Out Freestyle Cream Blush</p><br>
+      <p>Petal Poppin’</p><br>
+    </div>
+  </div>
+
+  <div class="product">
+    <img src="img/FBLG.jpg" alt="Fenty Lip Gloss" />
+    <div class="container2">
+      <h4>Lip Gloss</h4><br>
+      <p>Gloss Bomb Lip Luminizer</p><br>
+      <p>Fu$$Y – Shimmering Pink</p><br>
+    </div>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
