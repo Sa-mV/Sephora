@@ -12,7 +12,13 @@ document.addEventListener("DOMContentLoaded", function() {
   const skinTypeInput = document.getElementById("skinTypeInput");
   const skinColorInput = document.getElementById("skinColorInput");
 
-  // Variables to hold our 'AI identified' values:
+  // Brand/Product elements
+  const brandProductForm = document.getElementById("brandProductForm");
+  const brandSelect = document.getElementById("brandSelect");
+  const productSelect = document.getElementById("productSelect");
+  const submitSelectionBtn = document.getElementById("submitSelectionBtn");
+
+  // Variables to hold 'AI identified' values:
   let identifiedSkinType = "";
   let identifiedSkinColor = "";
 
@@ -21,10 +27,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const file = e.target.files[0];
     if (!file) return; // If no file, do nothing
     
-    // Reset sections
+    // Hide everything initially
     analysisSection.classList.add("hidden");
     recommendationsSection.classList.add("hidden");
     editForm.classList.add("hidden");
+    brandProductForm.classList.add("hidden");
 
     const fileName = file.name.toLowerCase();
 
@@ -37,8 +44,8 @@ document.addEventListener("DOMContentLoaded", function() {
       identifiedSkinColor = "Fair";
     } else {
       // Default or unrecognized
-      identifiedSkinType = "Unknown Skin Type";
-      identifiedSkinColor = "Unknown Color Tone";
+      identifiedSkinType = "Mixed";
+      identifiedSkinColor = "Light Skin";
     }
 
     // Show the analysis section
@@ -48,9 +55,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // 3. If user confirms
   confirmBtn.addEventListener("click", function() {
-    // Show the recommendations
+    // Hide analysis section
     analysisSection.classList.add("hidden");
-    recommendationsSection.classList.remove("hidden");
+    // Show the brand/product dropdown form
+    brandProductForm.classList.remove("hidden");
   });
 
   // 4. If user edits
@@ -71,6 +79,25 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Hide edit form again
     editForm.classList.add("hidden");
+  });
+
+  // 6. When user submits brand & product selection
+  submitSelectionBtn.addEventListener("click", function() {
+    const chosenBrand = brandSelect.value;
+    const chosenProduct = productSelect.value;
+
+    // Basic validation: ensure user actually picked something
+    if (!chosenBrand || !chosenProduct) {
+      alert("Please select both a brand and a product.");
+      return;
+    }
+
+    // You might do something with these values here, e.g. filter the recommendations or display a custom message
+    console.log(`User chose brand: ${chosenBrand} and product: ${chosenProduct}`);
+
+    // Finally, show the recommendations
+    brandProductForm.classList.add("hidden");
+    recommendationsSection.classList.remove("hidden");
   });
 
 });
