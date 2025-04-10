@@ -1,4 +1,3 @@
-// Script to handle the image upload and display recommended products
 document.addEventListener("DOMContentLoaded", function() {
   const imageInput = document.getElementById("imageInput");
   const analysisSection = document.getElementById("analysisSection");
@@ -12,10 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const skinTypeInput = document.getElementById("skinTypeInput");
   const skinColorInput = document.getElementById("skinColorInput");
 
-  // Brand/Product elements
+  // Brand/Product form
   const brandProductForm = document.getElementById("brandProductForm");
-  const brandSelect = document.getElementById("brandSelect");
-  const productSelect = document.getElementById("productSelect");
   const submitSelectionBtn = document.getElementById("submitSelectionBtn");
 
   // Variables to hold 'AI identified' values:
@@ -26,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
   imageInput.addEventListener("change", function(e) {
     const file = e.target.files[0];
     if (!file) return; // If no file, do nothing
-    
+
     // Hide everything initially
     analysisSection.classList.add("hidden");
     recommendationsSection.classList.add("hidden");
@@ -57,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
   confirmBtn.addEventListener("click", function() {
     // Hide analysis section
     analysisSection.classList.add("hidden");
-    // Show the brand/product dropdown form
+    // Show the brand/product checkbox form
     brandProductForm.classList.remove("hidden");
   });
 
@@ -73,31 +70,39 @@ document.addEventListener("DOMContentLoaded", function() {
   saveEditBtn.addEventListener("click", function() {
     identifiedSkinType = skinTypeInput.value.trim() || identifiedSkinType;
     identifiedSkinColor = skinColorInput.value.trim() || identifiedSkinColor;
-    
+
     // Update the analysis text
     analysisText.textContent = `Updated: you have ${identifiedSkinType} skin and a ${identifiedSkinColor} tone. Is that correct now?`;
-    
+
     // Hide edit form again
     editForm.classList.add("hidden");
   });
 
-  // 6. When user submits brand & product selection
+  // 6. When user submits brand & product selection via checkboxes
   submitSelectionBtn.addEventListener("click", function() {
-    const chosenBrand = brandSelect.value;
-    const chosenProduct = productSelect.value;
+    // Collect checked brands
+    const brandInputs = document.querySelectorAll('input[name="brand"]:checked');
+    const chosenBrands = Array.from(brandInputs).map(el => el.value);
 
-    // Basic validation: ensure user actually picked something
-    if (!chosenBrand || !chosenProduct) {
-      alert("Please select both a brand and a product.");
+    // Collect checked products
+    const productInputs = document.querySelectorAll('input[name="product"]:checked');
+    const chosenProducts = Array.from(productInputs).map(el => el.value);
+
+    // Basic validation: ensure at least one brand and product was checked
+    if (chosenBrands.length === 0 || chosenProducts.length === 0) {
+      alert("Please select at least one brand and one product.");
       return;
     }
 
-    // You might do something with these values here, e.g. filter the recommendations or display a custom message
-    console.log(`User chose brand: ${chosenBrand} and product: ${chosenProduct}`);
+    // For debugging or further logic:
+    console.log("Chosen brands:", chosenBrands);
+    console.log("Chosen products:", chosenProducts);
 
-    // Finally, show the recommendations
+    // Example: you might filter or display only the selected brand/product combos
+    // For now, we just show all the recommendations
+
+    // Hide the checkbox form and show recommendations
     brandProductForm.classList.add("hidden");
     recommendationsSection.classList.remove("hidden");
   });
-
 });

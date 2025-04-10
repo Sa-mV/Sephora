@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 
+/* Overall page styling */
 body {
   font-family: Arial, sans-serif;
   background: #fdfdfd;
@@ -17,27 +18,32 @@ body {
   margin: 0 auto;
 }
 
+/* Main title */
 h1 {
   text-align: center;
   margin-bottom: 1rem;
 }
 
+/* Upload section */
 #uploadSection {
   margin: 1.5rem 0;
   text-align: center;
 }
 
+/* Generic label styling */
 label {
   display: block;
   margin: 0.5rem 0 0.2rem 0;
 }
 
+/* File input */
 input[type="file"] {
   margin-top: 0.5rem;
   border: 1px solid #ccc;
   padding: 0.5rem;
 }
 
+/* Analysis and recommendations container styling */
 #analysisSection,
 #recommendationsSection {
   margin: 2rem 0;
@@ -46,6 +52,7 @@ input[type="file"] {
   border-radius: 5px;
 }
 
+/* Hide elements by default using this class */
 .hidden {
   display: none;
 }
@@ -54,6 +61,7 @@ input[type="file"] {
   margin-bottom: 1rem;
 }
 
+/* Buttons */
 .btn {
   padding: 0.5rem 1rem;
   background: #007bff;
@@ -67,6 +75,7 @@ input[type="file"] {
   background: #0056b3;
 }
 
+/* Edit form styling */
 #editForm {
   margin-top: 1rem;
 }
@@ -79,6 +88,7 @@ input[type="file"] {
   padding: 0.5rem;
 }
 
+/* Brand selection sections */
 .brand-section {
   border-top: 1px solid #ddd;
   padding-top: 1.5rem;
@@ -89,6 +99,7 @@ input[type="file"] {
   margin-bottom: 1rem;
 }
 
+/* Product containers */
 .product {
   display: flex;
   align-items: center;
@@ -106,4 +117,32 @@ input[type="file"] {
 
 .product h4 {
   margin-bottom: 0.2rem;
+}
+
+/* Fieldsets for checkbox groups */
+fieldset {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+legend {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+  margin-right: 0.4rem;
+  accent-color: #007bff; /* Adds your primary color to the checkbox. 
+                            (Supported in most modern browsers.) */
+}
+
+/* Fine-tune checkbox labels (optional) */
+fieldset label {
+  display: flex;         /* so checkbox and text sit on one line neatly */
+  align-items: center;
+  margin: 0.3rem 0;      /* small vertical spacing between each checkbox */
+  cursor: pointer;
 }
